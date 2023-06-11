@@ -22,7 +22,7 @@ const Leaderboard = () => {
     return (
         <div className='bg-white px-20 py-20 shadow-xl mx-20 rounded-xl'>
             <div className="flex justify-center flex-col">
-                <h1 className='text-center text-6xl mb-12'>Leaderboard</h1>
+                <h1 className='text-center text-6xl mb-12 text-blue-700'>Leaderboard</h1>
                 <table className='mx-48 text-2xl text-center text-blue-700'>
                     <tr>
                         <th className=''>Name</th>

@@ -36,7 +36,7 @@ const Calendar1 = () => {
   return (
     <div>
         <div className='w-full flex flex-col items-center justify-center h-full'>    
-            <h1 className='text-6xl mb-6'>Shower Tracker</h1> 
+            <h1 className='text-6xl mb-6 text-blue-700'>Shower Tracker</h1> 
             <Calendar onChange={onChange} className=''
              tileClassName={({ date, view }) => {
                 // Check if the date is the one you want to highlight
