@@ -48,10 +48,14 @@ const handleSubmission = (e) => {
             }).then(response => response.json())
             .then(data => {
               console.log("Success!", data);
-              const numberResult = Number(data);
-              console.log("Number result:", numberResult);
-              localStorage.setItem("score", 10)
-              navigate("/verified");
+              const probability = data.probability*100
+              localStorage.setItem("score", probability)
+              if (probability >= 75) {
+                navigate("/verified");
+              }
+              else {
+                  navigate("/unverified")
+              }
             })
             .catch(error => {
               console.log("Error:", error);
