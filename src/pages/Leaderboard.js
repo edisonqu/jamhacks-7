@@ -5,7 +5,7 @@ const Leaderboard = () => {
     const [info, setInfo] = useState()
     useEffect(() => {
          // Using Fetch API
-        fetch('/leaderboard', {
+        fetch('http://127.0.0.1:5000/leaderboard', {
             method: 'GET',
             headers: { "Content-Type": "application/json" },
             }
