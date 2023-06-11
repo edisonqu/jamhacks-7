@@ -12,9 +12,27 @@ const Home = () => {
         setDate(date)
     }
 
+    const id = localStorage.getItem("id")
+    const record = {id}
+
+    // Using Fetch API
+    fetch('/calendar', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(record)
+        }
+    ).then(response => response.json())
+    .then(data => {
+      console.log("Success! Response data:", data);
+      // Do further processing with the response data here
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    })
+
   return (
     <div>
-        <div className='w-full flex flex-col items-center justify-center h-full mt-20'>    
+        <div className='w-full flex flex-col items-center justify-center h-full'>    
             <h1 className='text-6xl mb-6'>Shower Tracker</h1> 
             <Calendar onChange={onChange} className=''
              tileClassName={({ date, view }) => {
@@ -38,7 +56,6 @@ const Home = () => {
                   }
               }}/>
             <p>{date.toString}</p>
-            <p></p>
          </div>
 
     </div>

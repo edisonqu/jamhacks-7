@@ -1,6 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react'
 
 const Leaderboard = () => {
+    useEffect(() => {
+         // Using Fetch API
+        fetch('/leaderboard', {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+            }
+        ).then(response => response.json())
+        .then(data => {
+            console.log("Success! Response data:", data);
+            // Do further processing with the response data here
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        })
+
+    }, [])
+   
+
   return (
     <div className='bg-white px-20 py-20 shadow-xl mx-20 rounded-xl'>
         <div className="flex justify-center flex-col">

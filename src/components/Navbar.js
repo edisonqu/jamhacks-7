@@ -60,6 +60,10 @@ const Navbar = () => {
             // Signed in successfully
             const user = result.user;
             console.log('Signed in successfully:', user);
+            console.log('Firebase User ID:', user.uid);
+            console.log('Firebase Display Name: ', user.displayName)
+            localStorage.setItem('uid', JSON.stringify(user.uid));
+            localStorage.setItem('name', JSON.stringify(user.displayName));
             setLoggedIn(!loggedIn)
           })
           .catch((error) => {
