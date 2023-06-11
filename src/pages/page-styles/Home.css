@@ -1,12 +1,12 @@
 
 
 .react-calendar .showered-date {
-    background-color: greenyellow;
+    background-color: rgb(151, 176, 247);
 }
 
 
 .react-calendar .missed-date {
-    background-color: red;
+    background-color: rgb(231, 110, 110);
 }
 
 

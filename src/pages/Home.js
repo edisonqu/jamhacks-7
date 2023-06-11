@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <div className='bg-div bg-no-repeat bg-cover flex items-center flex-col justify-center h-full w-full mt-20'>
         <h1 className='text-8xl text-blue-800 my-2'>Gamifiying Hygiene</h1>
-        <h1 className='text-5xl text-blue-600 my-2'>For CS and CE Majors @ Waterloo</h1>
-        <Link to="/calendar">
+        <h1 className='text-5xl text-blue-600 my-2'>For CS and CE Majors @ uWaterloo</h1>
+        <Link to="https://www.jamhacks.ca/">
             <button className="rounded-lg p-6 px-24 text-white bg-blue-800 font-bold hover-scale my-2">
                 Get Started
             </button>
