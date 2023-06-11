@@ -1,7 +1,8 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const Leaderboard = () => {
+    const [info, setInfo] = useState()
     useEffect(() => {
          // Using Fetch API
         fetch('/leaderboard', {
@@ -10,7 +11,8 @@ const Leaderboard = () => {
             }
         ).then(response => response.json())
         .then(data => {
-            console.log("Success! Response data:", data);
+            setInfo(data)
+            console.log("Success! Response data:", info);
             // Do further processing with the response data here
         })
         .catch(error => {
@@ -37,7 +39,7 @@ const Leaderboard = () => {
                     <td>Alisa</td>
                     <td>29</td>
                 </tr>
-                {data
+                {info
                     .sort((a, b) => a.item.shower_count - b.item.shower_count)
                     .map((item, index) => {
                     return (
