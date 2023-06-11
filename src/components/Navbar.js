@@ -17,6 +17,12 @@ const links = [
         priority: false
     },
     {
+        name: "Calendar",
+        link: "/calendar",
+        id: "calendar",
+        priority: false
+    },
+    {
         name: "Track",
         link: "/track",
         id: "track",
@@ -136,7 +142,7 @@ const Navbar = () => {
                         </div>
   
                     ) : (
-                        <Link to='/login'>
+                        <Link to='/'>
                             <button
                                 className="text-orange-900 hover:bg-orange-600 hover:text-orange-300 text-center border border-solid border-orange-900 mt-1 lg:mt-0 lg:ml-1 p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors"
                                 data-test-id={`navbar-login`}
