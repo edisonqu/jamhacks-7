@@ -23,8 +23,8 @@ db = client.jamhacks
 def verification():
     data = request.get_json()  # get data from POST request
     print("edison",data)
-    firebase_id = data.get('firebaseId')
-    display_name = data.get('displayName')
+    firebase_id = data.get('id')
+    display_name = data.get('displayName').replace('"','')
 
     # Create a record in MongoDB
     collection = db['showers']  # replace with your collection name
