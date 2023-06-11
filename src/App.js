@@ -9,6 +9,8 @@ import Calendar from './pages/Calendar'
 import Track from './pages/Track'
 import Leaderboard from './pages/Leaderboard'
 import Login from './pages/Login'
+import Verified from './pages/Verified'
+import Unverified from './pages/Unverified'
 
 function App() {
  return (
@@ -30,6 +32,8 @@ function App() {
             <Route path="/track" exact element={<Track />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
             <Route path="/login" exact element={<Login />} />
+            <Route path="/verified" exact element={<Verified />} />
+            <Route path="/unverified" exact element={<Unverified />} />
           </Routes>
         </AnimatePresence>
        </Suspense>

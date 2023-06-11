@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import Check from '../pictures/check.png'
 
 
@@ -10,6 +11,7 @@ import './page-styles/Track.css'
 
 
 const Track = () => {
+    const navigate = useNavigate();
     const [selectedImage, setSelectedImage] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
     const [byteArray, setByteArray] = useState();
@@ -48,6 +50,10 @@ const handleSubmission = (e) => {
               console.log("Success!", data);
               const numberResult = Number(data);
               console.log("Number result:", numberResult);
+              navigate("/verified");
+            
+              
+        
             })
             .catch(error => {
               console.log("Error:", error);

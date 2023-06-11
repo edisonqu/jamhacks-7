@@ -27,10 +27,22 @@ const links = [
         link: "/track",
         id: "track",
         priority: false
-        },
+    },
     {
         name: "Leaderboard",
         link: "/Leaderboard",
+        id: "leaderboard",
+        priority: false
+    },
+    {
+        name: "Leaderboard",
+        link: "/verified",
+        id: "leaderboard",
+        priority: false
+    },
+    {
+        name: "Leaderboard",
+        link: "/unverified",
         id: "leaderboard",
         priority: false
     }
