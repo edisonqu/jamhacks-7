@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Check from '../pictures/check.png'
 
 
+
+
 import './page-styles/Track.css'
 
 
@@ -34,6 +36,7 @@ const handleSubmission = (e) => {
             const currentDate = new Date();
             const displayName = localStorage.getItem("name");
             const id = localStorage.getItem('uid');
+            console.log(id)
             const record = {displayName, id, currentDate, byteData: base64String};
 
             fetch('http://127.0.0.1:5000/verify', {
