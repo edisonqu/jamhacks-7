@@ -70,12 +70,13 @@ const Track = () => {
 
   return (
     <div>
-        <h1 className='text-center text-6xl mb-2'>Track</h1>
-        <div className='bg-white mx-60 rounded-3xl flex flex-col justify-between shadow-2xl' style={{ height: 650}}>
+        <h1 className='text-center text-6xl mb-6 text-blue-600'>Track</h1>
+        <div className='bg-white mx-72 rounded-3xl flex flex-col justify-between shadow-2xl' style={{ height: 650}}>
             <div className='flex justify-between mx-20 mt-10'>
                 <div>
                     <h1 className='text-3xl text-blue-700 font-semibold'>Upload</h1>
                     <h2 className='text-blue-300 text-xl'>A picture of yourself <br /> after the shower</h2>
+                    <img className='rounded-full w-56'src="https://pbs.twimg.com/media/Dk-WD9QXoAAjIwW?format=jpg&name=large"></img>
                 </div>
                 <div>
                     <div className='upload-container'>
