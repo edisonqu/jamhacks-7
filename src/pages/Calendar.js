@@ -12,19 +12,21 @@ const Calendar1 = () => {
     const [info, setInfo] = useState([]);
 
     const id = localStorage.getItem("uid")
-    const record = {id}
+    const record = id.replace(/"/g, '');
 
 
     useEffect(() => {
-      fetch('http://127.0.0.1:5000/calendar', {
-          method: 'POST',
+      fetch(`http://127.0.0.1:5000/showers/${record}`, {
+          method: 'GET',
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(record)
+          // body: JSON.stringify(record)
           }
       ).then(response => response.json())
       .then(data => {
-        setInfo(data)
-        console.log("Success! Response data:", data);
+        const dates = data.map(dateString => new Date(dateString));
+
+        setInfo(dates)
+        console.log("Success! Response data:", dates);
         // Do further processing with the response data here
       })
       .catch(error => {
