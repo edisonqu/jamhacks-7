@@ -4,10 +4,12 @@ from bson.objectid import ObjectId
 from datetime import datetime
 import os
 from flask import request
+from flask_cors import CORS
 import requests
 
 
 app = Flask(__name__)
+CORS(app)
 
 # cuid, display name, firebaseId, hasShowered, Datetime, totalShowers, probabilityScore
 uri = f"mongodb+srv://jammy:jamhacks!@cluster0.igg4cmw.mongodb.net/"

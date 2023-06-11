@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 
 const Leaderboard = () => {
-    const [info, setInfo] = useState()
+    const [info, setInfo] = useState([])
     useEffect(() => {
          // Using Fetch API
         fetch('http://127.0.0.1:5000/leaderboard', {
