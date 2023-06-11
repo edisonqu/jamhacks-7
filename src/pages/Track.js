@@ -67,7 +67,7 @@ const handleSubmission = (e) => {
             <div className='flex justify-between mx-20 mt-10'>
                 <div>
                     <h1 className='text-3xl text-blue-700 font-semibold'>Upload</h1>
-                    <h2 className='text-blue-300 text-xl'>A picture of yourself <br /> after the shower</h2>
+                    <h2 className='text-blue-300 text-xl'>A selfie of yourself <br /> after the shower</h2>
                     <img className='rounded-lg w-48 mt-4'src="https://pbs.twimg.com/media/Dk-WD9QXoAAjIwW?format=jpg&name=large"></img>
                 </div>
                 <div>
@@ -113,7 +113,7 @@ const handleSubmission = (e) => {
                 </div>
                 <div>
                     <h1 className='text-3xl text-blue-700 font-semibold'>Verify</h1>
-                    <h2 className='text-blue-300 text-xl'>When the photo is verified <br /> you will be verified for the day</h2>
+                    <h2 className='text-blue-300 text-xl'>When the photo is verified through our AI model, <br/> you will be verified for the day. </h2>
                 </div>
             </div>
         </div>
