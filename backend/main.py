@@ -10,7 +10,7 @@ import requests
 app = Flask(__name__)
 
 # cuid, display name, firebaseId, hasShowered, Datetime, totalShowers, probabilityScore
-uri = f"mongodb+srv://{os.getenv('MONGODB_USERNAME')}:{os.getenv('MONGODB_PASSWORD')}@cluster0.igg4cmw.mongodb.net/?retryWrites=true&w=majority"
+uri = f"mongodb+srv://jammy:jamhacks!@cluster0.igg4cmw.mongodb.net/"
 client = MongoClient(uri)
 
 db = client.jamhacks

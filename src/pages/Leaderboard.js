@@ -37,6 +37,16 @@ const Leaderboard = () => {
                     <td>Alisa</td>
                     <td>29</td>
                 </tr>
+                {data
+                    .sort((a, b) => a.item.shower_count - b.item.shower_count)
+                    .map((item, index) => {
+                    return (
+                    <tr>
+                        <td>{item.display_name}</td>
+                        <td>{item.shower_count}</td>
+                    </tr>
+                    );
+                })}
     
             </table>
         </div>
