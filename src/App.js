@@ -14,7 +14,7 @@ function App() {
      <BrowserRouter>
        <Suspense fallback={<div>Page Loading...</div>}>
         <div className="bg-[#F8FAFF]">
-        <div className="flex w-full">
+        <div className="flex w-full p-8">
           { <img src={Logo} alt="Logo" width={29*5} height={42*5} /> }
          <Navbar />
          </div>
