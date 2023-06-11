@@ -33,7 +33,7 @@ const handleSubmission = (e) => {
             console.log('Image as byte array:', byteArray);
             const currentDate = new Date();
             const displayName = localStorage.getItem("name");
-            const id = localStorage.getItem('id');
+            const id = localStorage.getItem('uid');
             const record = {displayName, id, currentDate, byteData: base64String};
 
             fetch('http://127.0.0.1:5000/verify', {
