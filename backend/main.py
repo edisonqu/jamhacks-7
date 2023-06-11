@@ -59,19 +59,12 @@ def leaderboard():
     pipeline = [
         {"$match": {"has_showered": True}},
         {"$group": {
-            "_id": "$firebase_id",
+            "_id": "$display_name",
             "shower_count": {"$sum": 1}
         }},
-        {"$lookup": {
-            "from": "showers",  # replace with your collection name
-            "localField": "_id",
-            "foreignField": "firebase_id",
-            "as": "user_info"
-        }},
-        {"$unwind": "$user_info"},
         {"$project": {
             "_id": 0,
-            "display_name": "$user_info.display_name",
+            "display_name": "$_id",
             "shower_count": 1
         }}
     ]
