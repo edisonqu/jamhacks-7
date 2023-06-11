@@ -50,7 +50,8 @@ const handleSubmission = (e) => {
               console.log("Success!", data);
               const numberResult = Number(data);
               console.log("Number result:", numberResult);
-              navigate("/verified", { state: { score: 10 }});
+              localStorage.setItem("score", 10)
+              navigate("/verified");
             })
             .catch(error => {
               console.log("Error:", error);
