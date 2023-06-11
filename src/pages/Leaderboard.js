@@ -31,14 +31,6 @@ const Leaderboard = () => {
                     <th className=''>Name</th>
                     <th className=''># Showers</th>
                 </tr>
-                <tr>
-                    <td>Stephen</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>Alisa</td>
-                    <td>29</td>
-                </tr>
                 {info
                     .sort((a, b) => a.item.shower_count - b.item.shower_count)
                     .map((item, index) => {
