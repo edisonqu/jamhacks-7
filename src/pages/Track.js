@@ -50,10 +50,7 @@ const handleSubmission = (e) => {
               console.log("Success!", data);
               const numberResult = Number(data);
               console.log("Number result:", numberResult);
-              navigate("/verified");
-            
-              
-        
+              navigate("/verified", { state: { score: 10 }});
             })
             .catch(error => {
               console.log("Error:", error);

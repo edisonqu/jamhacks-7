@@ -18,7 +18,6 @@ const Leaderboard = () => {
         fetchData().then(r => console.log(r));
     }, [])
 
-
     return (
         <div className='bg-white px-20 py-20 shadow-xl mx-20 rounded-xl'>
             <div className="flex justify-center flex-col">
