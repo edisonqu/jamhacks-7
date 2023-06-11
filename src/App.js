@@ -5,8 +5,10 @@ import { AnimatePresence } from 'framer-motion'
 import Logo from "./pictures/logo.png"  
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Calendar from './pages/Calendar'
 import Track from './pages/Track'
 import Leaderboard from './pages/Leaderboard'
+import Login from './pages/Login'
 
 function App() {
  return (
@@ -23,8 +25,10 @@ function App() {
           mode='wait'>
             <Routes>
               <Route path="/" exact element={<Home />} />
+              <Route path="/calendar" exact element={<Calendar />} />
               <Route path="/track" exact element={<Track />} />
               <Route path="/leaderboard" exact element={<Leaderboard />} />
+              <Route path="/login" exact element={<Login />} />
             </Routes>
          </AnimatePresence>
 

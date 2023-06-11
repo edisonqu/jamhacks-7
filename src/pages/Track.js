@@ -17,56 +17,45 @@ const Track = () => {
         setIsFilePicked(true);
     }
 
-	const handleSubmission = (e) => {
-        e.preventDefault();
-        const file = selectedImage
-    
-        // Read the file as an ArrayBuffer
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const byteArray = new Uint8Array(reader.result);
-                setByteArray(byteArray)
-            
-                // Do further processing with the byte array, such as sending it to a server or storing it in a database
-                console.log('Image as byte array:', byteArray);
-            };
-            console.log("Byte")
-            console.log(byteArray)
-            reader.readAsArrayBuffer(file);
-            console.log("HEY")
-        
-            setSelectedImage(URL.createObjectURL(file));
-            console.log("HEYA")
-            console.log("ssls")
-            const currentDate = new Date();
-            const date = currentDate.getDate();
-            const month = currentDate.getMonth() + 1;
-            const year = currentDate.getFullYear();
-            const displayName = localStorage.getItem("name")
-            const id = localStorage.getItem('id')
-            console.log(currentDate)
-            const record = {displayName, id, currentDate, byteArray}
+const handleSubmission = (e) => {
+    e.preventDefault();
+    const file = selectedImage;
 
-          
-            
-            // Using Fetch API
-            fetch('/verify', {
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const byteArray = new Uint8Array(reader.result);
+            const base64String = btoa(
+                byteArray.reduce((data, byte) => data + String.fromCharCode(byte), '')
+            );
+            setByteArray(byteArray);
+
+            console.log('Image as byte array:', byteArray);
+            const currentDate = new Date();
+            const displayName = localStorage.getItem("name");
+            const id = localStorage.getItem('uid');
+            const record = {displayName, id, currentDate, byteData: base64String};
+
+            fetch('http://127.0.0.1:5000/verify', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(record)
             }).then(response => response.json())
             .then(data => {
               console.log("Success!", data);
-              // Use the response data as a number
               const numberResult = Number(data);
               console.log("Number result:", numberResult);
             })
             .catch(error => {
               console.log("Error:", error);
             });
-        }
-    };
+
+            setSelectedImage(URL.createObjectURL(file));
+        };
+        reader.readAsArrayBuffer(file);
+    }
+};
+
 
   return (
     <div>

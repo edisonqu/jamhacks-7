@@ -1,3 +1,5 @@
+from base64 import b64decode
+
 from flask import Flask, jsonify
 from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
@@ -20,11 +22,12 @@ db = client.jamhacks
 @app.route('/verify', methods=['POST'])
 def verification():
     data = request.get_json()  # get data from POST request
+    print("edison",data)
     firebase_id = data.get('firebaseId')
     display_name = data.get('displayName')
 
     # Create a record in MongoDB
-    collection = db['your_collection_name']  # replace with your collection name
+    collection = db['showers']  # replace with your collection name
     doc_id = collection.insert_one({
         "firebase_id": firebase_id,
         "display_name": display_name,
@@ -35,21 +38,40 @@ def verification():
 
     # Handle the byte data from POST request
     # This depends on what you're doing with the byte data
-    byte_data = data.get('byteData')
+    byte_data_base64 = data.get('byteData')
+    byte_data_bytes = b64decode(byte_data_base64)
 
     # Call the Azure API
     # This depends on the specific Azure API you're using
-    azure_api_url = 'https://example.com/azure-api'  # replace with the actual Azure API URL
-    azure_api_response = requests.post(azure_api_url, data=byte_data)
+    azure_api_url = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/69c85dff-8308-43b3-942d-676be4d462fb/classify/iterations/Iteration1/image'  # replace with the actual Azure API URL
+    prediction_key = "71acb1feaadc4b8bb5fd2bd32d9bc908"
+
+    headers = {
+        "Prediction-Key": prediction_key,
+        "Content-Type": "application/octet-stream"
+    }
+
+    azure_api_response = requests.post(azure_api_url, headers=headers,data=byte_data_bytes)
     azure_api_response_data = azure_api_response.json()
 
+    print(azure_api_response_data)
+
+    probability = 0
     # Handle probability
     # This depends on how you're handling the probability
-    probability = azure_api_response_data.get('probability')
+    for prediction in azure_api_response_data['predictions']:
+        if prediction['tagName'] == 'selfie':
+            probability = prediction['probability']
+            break
+
+    if probability > 0.75:
+        has_showered = True
+    else:
+        has_showered = False
 
     # Update the document in MongoDB with the probability
-    collection.update_one({"_id": doc_id}, {"$set": {"probability_score": probability}})
-
+    collection.update_one({"_id": doc_id}, {"$set": {"probability_score": probability,"has_showered":has_showered}})
+    print("edisonedison",probability)
     return {"message": "Verification processed", "probability": probability}
 
 
