@@ -33,18 +33,6 @@ const links = [
         link: "/Leaderboard",
         id: "leaderboard",
         priority: false
-    },
-    {
-        name: "Leaderboard",
-        link: "/verified",
-        id: "leaderboard",
-        priority: false
-    },
-    {
-        name: "Leaderboard",
-        link: "/unverified",
-        id: "leaderboard",
-        priority: false
     }
 ]
 
