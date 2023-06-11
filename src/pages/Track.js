@@ -1,9 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import Check from '../pictures/check.png'
+
+
 import './page-styles/Track.css'
 
+
 const Track = () => {
+
+
     const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
@@ -17,8 +22,8 @@ const Track = () => {
 
   return (
     <div>
-        <h1 className='text-center text-5xl mb-2 mt-20'>Track</h1>
-        <div className='bg-gray-100 mx-60 rounded-3xl flex flex-col justify-between shadow-2xl' style={{ height: 550}}>
+        <h1 className='text-center text-6xl mb-2 mt-20'>Track</h1>
+        <div className='bg-white mx-60 rounded-3xl flex flex-col justify-between shadow-2xl' style={{ height: 550}}>
             <div className='flex justify-between mx-20 mt-10'>
                 <div>
                     <h1 className='text-3xl text-blue-700 font-semibold'>Upload</h1>
@@ -48,6 +53,7 @@ const Track = () => {
                         )}
                         
                         <button className='bg-blue-600 rounded-lg py-2 px-6 text-white mt-6' onClick={handleSubmission}>Submit</button>
+                  
                     </div>
 			<div>
 

@@ -1,6 +1,13 @@
 
 
+.react-calendar .showered-date {
+    background-color: greenyellow;
+}
 
+
+.react-calendar .missed-date {
+    background-color: red;
+}
 
 
 .react-calendar {
@@ -88,7 +95,7 @@
     text-align: center;
     padding: 0.75em 0.5em;
     background: none;
-    background: green;
+    background: white;
 }
 .react-calendar__tile:disabled {
     background-color: #f0f0f0;

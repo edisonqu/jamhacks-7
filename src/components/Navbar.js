@@ -6,6 +6,8 @@ import {
    useLocation
 } from "react-router-dom";
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 const links = [
     {
@@ -39,15 +41,52 @@ const links = [
 
  
 const Navbar = () => {
+    const firebaseConfig = {
+        apiKey: "AIzaSyATw-QdOtHbH1qVnyT1rWch27JuwXRIGGU",
+        authDomain: "jamhacks7-2e678.firebaseapp.com",
+        projectId: "jamhacks7-2e678",
+        storageBucket: "jamhacks7-2e678.appspot.com",
+        messagingSenderId: "265882374247",
+        appId: "1:265882374247:web:924e0edf5eaf15e21d44c2",
+        measurementId: "G-P52FERNNP8"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const signInWithGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+          .then((result) => {
+            // Signed in successfully
+            const user = result.user;
+            console.log('Signed in successfully:', user);
+            setLoggedIn(!loggedIn)
+          })
+          .catch((error) => {
+            // Sign in failed
+            console.error('Sign in with Google failed:', error);
+          });
+        };
+        
+    const signOut = () => {
+        firebase.auth().signOut()
+            .then(() => {
+            console.log('Signed out successfully');
+            setLoggedIn(!loggedIn)
+            })
+            .catch((error) => {
+            console.error('Sign out failed:', error);
+            });
+        };
+
+
    const [showDropdown, setShowDropdown] = useState(false);
    const { pathname } = useLocation();
 
    const [loggedIn, setLoggedIn] = useState(false)
 
 
-   const handleClick = () => {
-       setLoggedIn(!loggedIn)
-   }
+
 
    return (
     //{pathname ? opacity:0 : opacity:1}
@@ -85,7 +124,7 @@ const Navbar = () => {
                                 <button
                                     className="text-orange-900 hover:bg-orange-600 hover:text-orange-300 text-center border border-solid border-orange-900 mt-1 lg:mt-0 lg:ml-1 p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors"
                                     data-test-id={`navbar-logout`}
-                                    onClick={() => handleClick()}
+                                    onClick={() => signOut()}
                                 >
                                     Log out
                                 </button>
@@ -97,7 +136,7 @@ const Navbar = () => {
                             <button
                                 className="text-orange-900 hover:bg-orange-600 hover:text-orange-300 text-center border border-solid border-orange-900 mt-1 lg:mt-0 lg:ml-1 p-2 lg:px-4 lg:mx-2 rounded duration-300 transition-colors"
                                 data-test-id={`navbar-login`}
-                                onClick={(e) => handleClick()}
+                                onClick={(e) => signInWithGoogle()}
                             >
                                 Log in
                             </button>
