@@ -5,9 +5,10 @@ import './page-styles/Home.css'
 
 const Home = () => {
     const currentDate = new Date();
-    const showeredDate1 = new Date(2023, 5, 11); 
-    const showeredDate2 = new Date(2023, 5, 12); 
-    const showeredDates = [showeredDate1, showeredDate2]
+    const showeredDate1 = new Date(2023, 5, 7); 
+    const showeredDate2 = new Date(2023, 5, 4); 
+    const showeredDate3 = new Date(2023, 5, 8); 
+    const showeredDates = [showeredDate1, showeredDate2, showeredDate3]
     
     const [date, setDate] = useState(new Date());
     const onChange = date => {
@@ -39,31 +40,22 @@ const Home = () => {
             <Calendar onChange={onChange} className=''
              tileClassName={({ date, view }) => {
                 // Check if the date is the one you want to highlight
-
-                for (let i = 0; i < showeredDates.length; i++) {
-                    const showeredDate = new Date(showeredDates[i]);
-                    if (
-                    
-                        date.getFullYear() === showeredDate.getFullYear() &&
-                        date.getMonth() === showeredDate.getMonth() &&
-                        date.getDate() === showeredDate.getDate()
-                    
-                    ) {
-                    // Return a custom class name for the specific date
+                const isShoweredDate = showeredDates.some(showeredDate => (
+                    date.getFullYear() === showeredDate.getFullYear() &&
+                    date.getMonth() === showeredDate.getMonth() &&
+                    date.getDate() === showeredDate.getDate()
+                  ));
+      
+                  // Return class names based on the conditions
+                  if (isShoweredDate) {
                     return 'showered-date';
-                    }
-                    else {
-                        if (currentDate > date) {
-                            return 'missed-date';
-    
-                        }
-                    }
-                }
-
-              
+                  } else if (currentDate > date) {
+                    return 'missed-date';
+                  }
 
                
-              }}/>
+                }
+              }/>
             <p>{date.toString}</p>
          </div>
 
