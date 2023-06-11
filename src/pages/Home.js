@@ -4,8 +4,10 @@ import Calendar from 'react-calendar';
 import './page-styles/Home.css'
 
 const Home = () => {
-    const showeredDate = new Date(2023, 5, 11); 
-    const missedDate = new Date(2023, 5, 12); 
+    const currentDate = new Date();
+    const showeredDate1 = new Date(2023, 5, 11); 
+    const showeredDate2 = new Date(2023, 5, 12); 
+    const showeredDates = [showeredDate1, showeredDate2]
     
     const [date, setDate] = useState(new Date());
     const onChange = date => {
@@ -37,23 +39,30 @@ const Home = () => {
             <Calendar onChange={onChange} className=''
              tileClassName={({ date, view }) => {
                 // Check if the date is the one you want to highlight
-                if (
-                  date.getFullYear() === showeredDate.getFullYear() &&
-                  date.getMonth() === showeredDate.getMonth() &&
-                  date.getDate() === showeredDate.getDate()
-                ) {
-                  // Return a custom class name for the specific date
-                  return 'showered-date';
+
+                for (let i = 0; i < showeredDates.length; i++) {
+                    const showeredDate = new Date(showeredDates[i]);
+                    if (
+                    
+                        date.getFullYear() === showeredDate.getFullYear() &&
+                        date.getMonth() === showeredDate.getMonth() &&
+                        date.getDate() === showeredDate.getDate()
+                    
+                    ) {
+                    // Return a custom class name for the specific date
+                    return 'showered-date';
+                    }
+                    else {
+                        if (currentDate > date) {
+                            return 'missed-date';
+    
+                        }
+                    }
                 }
 
-                if (
-                    date.getFullYear() === missedDate.getFullYear() &&
-                    date.getMonth() === missedDate.getMonth() &&
-                    date.getDate() === missedDate.getDate()
-                  ) {
-                    // Return a custom class name for the specific date
-                    return 'missed-date';
-                  }
+              
+
+               
               }}/>
             <p>{date.toString}</p>
          </div>
