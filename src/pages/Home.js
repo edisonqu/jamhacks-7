@@ -1,8 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const Home = () => {
+    const [value, onChange] = useState(new Date());
   return (
-    <div>Home</div>
+    <div>
+        
+         <Calendar onChange={onChange} value={value} />
+
+    </div>
   )
 }
 
