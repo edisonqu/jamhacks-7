@@ -1,14 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import './page-styles/Home.css'
 
 const Home = () => {
-    const [value, onChange] = useState(new Date());
+    
+    const [date, setDate] = useState(new Date());
+    const onChange = date => {
+        setDate(date)
+    }
+
   return (
     <div>
-        
-         <Calendar onChange={onChange} value={value} />
+        <div className='w-full flex flex-col items-center justify-center h-full mt-20'>    
+            <h1 className='text-6xl mb-6'>Shower Tracker</h1> 
+            <Calendar onChange={onChange} className=''/>
+            <p>{date.toString}</p>
+            <p></p>
+         </div>
 
     </div>
   )
